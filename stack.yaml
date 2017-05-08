@@ -2,6 +2,7 @@ resolver: lts-8.9
 
 packages:
 - liquid-fixpoint/
+- liquiddialog/
 - '.'
 
 extra-deps:
@@ -11,6 +12,10 @@ extra-deps:
 - fgl-visualize-0.1.0.1
 - intern-0.9.1.4
 - located-base-0.1.1.0
+- wxc-0.92.3.0
+- wxdirect-0.92.3.0
+- wxcore-0.92.3.0
+- wx-0.92.3.0
 
 flags:
   liquidhaskell:

@@ -2,11 +2,11 @@ module Gradual where
  
 {-@ LIQUID "--gradual"        @-}
 {-@ LIQUID "--savequery"      @-}
-{-@ LIQUID "--ginteractive"   @-}
+{- LIQUID "--ginteractive"   @-}
  
 {-@ safe :: {v:Int | ?? } -> Int @-}
 safe   :: Int ->  Int
-safe x = if foo () then bar1 x else bar2 x
+safe x = if foo () then bar1 x else bar2 x                       
  
 {-@ foo :: () -> {v:Bool | true } @-} 
 foo :: () -> Bool 

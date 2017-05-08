@@ -1,0 +1,20 @@
+name:                liquiddialog
+version:             0.1.0.0
+license:             MIT
+license-file:        LICENSE
+author:              nikivazou
+maintainer:          nikivazou@gmail.com
+category:            Graphics
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+library
+  other-modules:       Main
+  exposed-modules:     Graphics.UI.Select.Types,
+                       Graphics.UI.Select.DrawSolutions
+  build-depends:       base >=4.9 && <4.10, wxc==0.92.3.0, wx, wxcore==0.92.3.0
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+
