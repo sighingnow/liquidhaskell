@@ -20,9 +20,10 @@ ss2 = [ [[Sol (SrcSpan (6,22) (6,23)) (SrcSpan (8, 25) (8,31)) "v<0"], [Sol (Src
       ]
 
 --the main function
+main :: IO () 
 main = do 
   let fname = "/Users/niki/liquidtypes/liquidhaskell/tests/gradual/pos/Gradual.hs"
-  drawSolutions (makePInfo fname ss2)
+  return () -- drawSolutions $ error "?" -- (makePInfo fname ss2)
                          
 instance ShowPP String where
   showpp x = x  

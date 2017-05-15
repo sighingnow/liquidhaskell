@@ -5,15 +5,24 @@ import Graphics.UI.WXCore.WxcClassesAL
 
 import Graphics.UI.Select.Types
 
+import Control.Concurrent
 
 
+compute :: Var Int -> IO ()
+compute v = varUpdate v (+1) >> return ()
 
-drawSolutions :: (ShowPP v, Eq v, Eq src, HasSpan src) =>  Info src v -> IO ()
+drawSolutions :: (ShowPP v, Eq v, Eq src, HasSpan src) 
+  => Info src v -> IO ()
 drawSolutions (Info filename ss status)
   = start $ do -- a list of balls, where each ball is represented
        -- by a list of all future positions.
        vsols <- varCreate ss
        vstats <- varCreate status 
+
+       let i = 10 
+       vSols <- mapM varCreate [1..i]
+
+       mapM_ (\i -> forkIO (compute i)) vSols
 
 
 

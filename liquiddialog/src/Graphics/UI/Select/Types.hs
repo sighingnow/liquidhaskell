@@ -93,8 +93,8 @@ fromList (x:xs) = Zipper x [] xs
 
 
 
-makePInfo :: (Eq a, Eq src) => String -> [[[Sol src a]]] -> Info src a
-makePInfo str ss = Info str ps (makeStatus ps)
+makePInfo :: (Eq a, Eq src) => String -> [[[Sol src a]]] ->  (Info src a)
+makePInfo str ss =  Info str ps (makeStatus ps)
   where 
   	ps = zipWith3 f [1..] colors ss
   	f i c ss = Partition i c (fromList ss)
