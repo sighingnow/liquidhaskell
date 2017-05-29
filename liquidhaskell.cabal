@@ -1,5 +1,5 @@
 Name:                liquidhaskell
-Version:             0.8.0.0
+Version:             0.8.0.1
 Copyright:           2010-17 Ranjit Jhala & Niki Vazou, University of California, San Diego.
 build-type:          Simple
 Synopsis:            Liquid Types for Haskell
@@ -74,7 +74,7 @@ Executable liquid
                , hpc >= 0.6
 
   Main-is: src/Liquid.hs
-  ghc-options: -W -threaded
+  ghc-options: -W -threaded -Werror
   if flag(devel)
     ghc-options: -Werror
   Default-Extensions: PatternGuards

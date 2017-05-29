@@ -16,7 +16,7 @@ drawSolutions :: (ShowPP v, Eq v, Eq src, HasSpan src)
 drawSolutions (Info filename ss status)
   = start $ do -- a list of balls, where each ball is represented
        -- by a list of all future positions.
-       vsols <- varCreate ss
+       vsols  <- varCreate ss
        vstats <- varCreate status 
 
        let i = 10 
