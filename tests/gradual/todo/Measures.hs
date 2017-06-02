@@ -4,31 +4,20 @@ module Measures where
 {-@ LIQUID "--gradual" @-}
 {-@ LIQUID "--scrape-used-imports" @-}
 
+{-@ g :: x:{[Int] | ??} -> y:{[Int] | ?? } -> Int @-}
+g :: [Int] -> [Int] -> Int  
+g xs ys = sumInt (mapInt (\i -> (xs!!i + ys!!i)) (range 0 (length xs)))
 
--- This does not work because I need the special locality treatment for measures
-{-@ g :: x:{v:Int | 0 < v } -> y:{v:Int |  ?? }  -> Bool @-}
-g :: Int -> Int -> Bool  
-g x y = foo x y 
+sumInt :: [Int] -> Int 
+sumInt = sum 
 
-foo :: Int -> Int -> Bool  
-{-@ foo :: x:Int -> {v:Int | 0 <= v && v < x} -> Bool @-}
-foo _ _ = True   
+mapInt :: (Int -> Int) -> [Int] -> [Int] 
+mapInt = map 
 
-
-{- 
--- This does not work because I need the special locality treatment for measures
-{- f :: x:[a] -> {v:Int | true } -> a -> Bool @-}
-f :: Eq a => [a] -> Int -> a -> Bool  
-f xs i y= xs!!i == y 
--}
--- ?? = 0 <= v && v < len x
-
-{- 
--- IS LOCAL 
-exists v.  0 <= v && v < len x
-
-ISSAT? 
-forall v. v < 0 || app len x <= v 
+{-@ range :: lo:Int -> hi:Int -> [{v:Int | 0 <= v && v < hi}] @-} 
+range :: Int -> Int -> [Int] 
+range lo hi
+  | lo < hi = lo:range (lo+1) hi
+  | otherwise = []
 
 
--}
